@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>puissance_4</title>
-        <link rel="stylesheet" href="./css/style.css">
-    </head>
-    <body>
-        <section id="puissance">
 
-        </section>
-    </body>
-    <script type="text/javascript">
-    var tableau =  [["","","","","","","","",""]
-                    ["","","","","","","","",""]
-                    ["","","","","","","","",""]
-                    ["","","","","","","","",""]
-                    ["","","","","","","","",""]
-                    ["","","","","","","","",""]
-];
+<head>
+    <meta charset="utf-8">
+    <title>puissance_4</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <table id="butt">
+
+    </table>
+    <table id="puissance">
+
+    </table>
+</body>
+<script type="text/javascript">
+    for (k = 0; k < 7; k++) {
+        var button = document.createElement("button");
+
+        var bodyElement = document.getElementById("butt")
+        bodyElement.appendChild(button);
+    }
+
+    var tableau = [
+        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", ""],
+    ];
+
+    var tableElement = document.getElementById("puissance");
 
 
 
-    var sectionElement = document.getElementById("puissance");
-    var tableau = document.createElement("div");
-    sectionElement.appendChild(tableau);
+    for (i = 0; i < tableau.length; i++) {
 
+        var ligne = document.createElement("tr");
+        for (j = 0; j < tableau[i].length; j++) {
+            var cellule = document.createElement("td");
+            ligne.appendChild(cellule);
+            tableElement.appendChild(ligne);
+        }
+    }
+</script>
 
-
-
-
-    //
-    // var tblBody = document.createElement("tbody");
-    //
-    // for (i = 0 ;i < 6; i++){
-    //     var button = document.createElement("button")
-    //     var ligne = document.createElement("tr");
-    //     for(j = 0; j < 7; j++){
-    //         var cellule = document.createElement("td");
-    //         ligne.appendChild(cellule);
-    //     }
-    // sectionElement.appendChild(button);
-    // tblBody.appendChild(ligne);
-    // }
-    // tableau.appendChild(tblBody);
-    </script>
 </html>
