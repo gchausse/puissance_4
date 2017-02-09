@@ -18,9 +18,15 @@
 <script type="text/javascript">
     for (k = 0; k < 7; k++) {
         var button = document.createElement("button");
-
+        button.innerHTML = k;
         var bodyElement = document.getElementById("butt")
         bodyElement.appendChild(button);
+
+        button.addEventListener("click", function(){
+            console.log(tableau[k][this.id]);
+
+        });
+
     }
 
     var tableau = [
