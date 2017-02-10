@@ -20,6 +20,10 @@
     // console.log(tableau[k][this.innerHTML]);
     var count = 1;
     var changeCellule = null;
+    var pointRY = 0;
+    var pointRX = 0;
+    var pointYY = 0;
+    var pointYX = 0;
     for (k = 0; k < 7; k++) {
         var button = document.createElement("button");
         button.innerHTML = k;
@@ -40,6 +44,86 @@
                 changeCellule = document.getElementById("card" + l +"-" + this.innerHTML);
                 changeCellule.className = "jaune";
                 count = 1;
+            }
+            pointRX = 0;
+            pointYX = 0;
+
+            for (m = 0; m < 6; m++){
+                if(tableau[m][this.innerHTML] == "R"){
+                    pointRY++;
+                }else if(tableau[m][this.innerHTML] == "Y"){
+                    pointRY = 0;
+                }
+                if(tableau[m][this.innerHTML] == "Y"){
+                    pointYY++;
+                }else if(tableau[m][this.innerHTML] == "R"){
+                    pointYY = 0 ;
+                }
+                pointRX = 0;
+                pointYX = 0;
+
+                for (n = 0 ; n < 7; n++){
+
+                    if(tableau[m][n] == "R"){
+                        pointRX++;
+                        if(tableau[m-1][n-1] == "R"){
+                            if(tableau[m-2][n-2] == "R"){
+                                if(tableau[m-3][n-3] == "R"){
+                                    pointRX = 4;
+                                    console.log(pointRX);
+                                }
+                            }
+                        }
+                        if(tableau[m-1][n+1] == "R"){
+                            if(tableau[m-2][n+2] == "R"){
+                                if(tableau[m-3][n+3] == "R"){
+                                    pointRX = 4;
+                                    console.log(pointRX);
+                                }
+                            }
+                        }
+                    }else{
+                        pointRX = 0;
+                    }
+                    if(tableau[m][n] == "Y"){
+                        pointYX++;
+                        if(tableau[m-1][n-1] == "Y"){
+                            if(tableau[m-2][n-2] == "Y"){
+                                if(tableau[m-3][n-3] == "Y"){
+                                    pointYX = 4;
+                                    console.log(pointRX);
+                                }
+                            }
+                        }
+                        if(tableau[m-1][n+1] == "Y"){
+                            if(tableau[m-2][n+2] == "Y"){
+                                if(tableau[m-3][n+3] == "Y"){
+                                    pointRX = 4;
+                                    console.log(pointRX);
+                                }
+                            }
+                        }
+                    
+                    }else{
+                        pointYX = 0;
+                    }
+                    if(pointRX == 4 ){
+                        alert("joueur1 gagne");
+                    };
+                    if(pointYX == 4 ){
+                        alert("joueur2 gagne");
+                    }
+
+                }
+
+                if(pointRY == 4 ){
+                    alert("joueur1 gagne");
+                }
+
+                if(pointYY == 4 ){
+                    alert("joueur2 gagne");
+                }
+                ;
             }
         });
     }
