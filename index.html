@@ -16,38 +16,56 @@
     </table>
 </body>
 <script type="text/javascript">
+    // button du tableau
+    // console.log(tableau[k][this.innerHTML]);
+    var count = 1;
+    var changeCellule = null;
     for (k = 0; k < 7; k++) {
         var button = document.createElement("button");
         button.innerHTML = k;
         var bodyElement = document.getElementById("butt")
         bodyElement.appendChild(button);
-
         button.addEventListener("click", function(){
-            console.log(tableau[k][this.id]);
-
+            var l = 5;
+            while(tableau[l][this.innerHTML] != ""){
+                l--;
+            }
+            if (count == 1 ) {
+                tableau[l][this.innerHTML] ="R";
+                changeCellule = document.getElementById("card" + l +"-" + this.innerHTML);
+                changeCellule.className = "rouge";
+                count ++;
+            }else if(count == 2){
+                tableau[l][this.innerHTML] ="Y";
+                changeCellule = document.getElementById("card" + l +"-" + this.innerHTML);
+                changeCellule.className = "jaune";
+                count = 1;
+            }
         });
-
     }
 
-    var tableau = [
-        ["", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", ""],
-        ["", "", "", "", "", "", ""],
-    ];
+
+        var tableau = [
+            ["", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""],
+            ["", "", "", "", "", "", ""]
+        ];
+
 
     var tableElement = document.getElementById("puissance");
 
 
-
+    // lignes du tableau.
     for (i = 0; i < tableau.length; i++) {
-
         var ligne = document.createElement("tr");
+
+        // cellule du tableau
         for (j = 0; j < tableau[i].length; j++) {
             var cellule = document.createElement("td");
+            cellule.id = "card" + i +"-" + j;
             ligne.appendChild(cellule);
             tableElement.appendChild(ligne);
         }
